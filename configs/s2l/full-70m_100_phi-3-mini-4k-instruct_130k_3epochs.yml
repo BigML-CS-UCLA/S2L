@@ -1,0 +1,34 @@
+full_data_path: TIGER-Lab/MathInstruct
+model_name_or_path: microsoft/Phi-3-mini-4k-instruct
+cache_dir: /data/huggingface_models
+model_max_length: 512
+schedule_name: S2L
+result_dir_name: s2l-pythia-70m-deduped-100-oneshot-130k_mathinstruct_phi-3-mini-4k-instruct_3epochs_512
+train_args:
+  optim: adamw_torch
+  num_train_epochs: 3
+  per_device_train_batch_size: 4
+  per_device_eval_batch_size: 4
+  gradient_accumulation_steps: 8
+  evaluation_strategy: "no"
+  save_strategy: "steps"
+  save_steps: 500
+  save_total_limit: 2
+  learning_rate: 2.0e-5
+  weight_decay: 0.
+  warmup_ratio: 0.03
+  lr_scheduler_type: cosine
+  logging_steps: 1
+  fsdp: "full_shard auto_wrap"
+  fsdp_config: 
+    transformer_layer_cls_to_wrap: "Phi3DecoderLayer"
+  bf16: TRUE
+  tf32: TRUE
+  group_by_length: TRUE
+  full_determinism: TRUE
+  seed: 42
+init_label_num: 131020
+n_round: 0
+n_query: 131020
+n_components: 100
+ref_model_path: res/full_mathinstruct_pythia-70m-deduped_3epochs_512_checkpoints/output
