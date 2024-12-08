@@ -6,6 +6,10 @@ Authors: [Yu Yang](https://sites.google.com/g.ucla.edu/yuyang/home), Siddhartha 
 
 ## Overview
 
+**SmallToLarge (S2L)** is a scalable and efficient data selection algorithm designed to optimize the supervised fine-tuning (SFT) of large language models (LLMs) for specialized domains. The method bridges the gap between data efficiency and performance, enabling fine-tuning on significantly reduced datasets while achieving comparable or superior results to training on full datasets.
+
+S2L leverages the training trajectories of smaller proxy models to identify and cluster data points with similar learning dynamics. By selecting representative samples from these clusters, the method ensures comprehensive coverage of the domain's knowledge while dramatically reducing computational and data requirements. This approach is grounded in rigorous theoretical analysis, demonstrating that examples with similar trajectories impact model gradients in comparable ways, thus supporting the efficacy of S2L.
+
 ## 📋 Table of Contents
 
 - [Installation](#installation)
